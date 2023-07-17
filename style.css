@@ -1,0 +1,258 @@
+* {
+	user-select: none;
+	overflow: hidden;
+}
+
+html, body {
+	margin: 0;
+}
+
+#container {
+	position:absolute;
+	/*background-color:#A9A9A9;
+	border:2px solid #FF0000;*/
+	width:100vw;
+	height:100vw;
+}
+
+#field {
+	position:absolute;
+	width:30vw;
+	height:30vw;
+	top:calc(10vw / 1.89); /* Change X: "calc(Xvw / 1.89)" */
+	left:40vw;
+	background-color:#228B22;
+	margin-left:-5vw;
+}
+
+#bb_upg_container {
+	position:absolute;
+	width:60vw;
+	height:40vw;
+	top:calc(10vw / 1.89); /* Change X: "calc(Xvw / 1.89)" */
+	left:25vw;
+	background-color:#161762;
+	border:4px solid #0F104B;
+	margin-left:-5vw;
+}
+
+#bb_upg_window {
+	position:absolute;
+	width:60vw;
+	height:36vw;
+}
+
+.menu {
+	width:inherit;
+	height:inherit;
+	display:none;
+	position:absolute;
+	margin:0;
+}
+#menu_mf {
+	display:block;
+	background-color:#292929;
+	/*A9A9A9*/
+}
+#menu_bb {
+	background-color:#101130;
+	/*3D3FB7*/
+}
+
+.bt {
+	position:absolute;
+	text-align:center;
+	font-size:2vw;
+	font-family: Arial, Helvetica, sans-serif;
+	width:18vw;
+	height:3vw;
+}
+#bt_get_coins {
+	top:36vw;
+	left:41vw;
+}
+#bt_restart {
+	top:40vw;
+	left:41vw;
+}
+#bt_big_bang {
+	top:44vw;
+	left:41vw;
+	height:7vw;
+	font-size:1.5vw;
+	display:none;
+}
+
+.bb_upg_bt {
+	position:absolute;
+	text-align:center;
+	font-size:3.6vw;
+	color:#121457;
+	background-color:#2F30B4;
+	border:4px solid #0F104B;
+	font-family: Arial, Helvetica, sans-serif;
+	width:20vw;
+	height:6vw;
+	top:36vw;
+	left:-0.1vw;
+}
+#bb_upg_bt_comfort {
+	left:20vw;
+}
+#bb_upg_bt_abilities {
+	left:40vw;
+}
+
+#bb_upg_desc {
+	position:absolute;
+	
+	display:block;
+	
+	text-align:center;
+	font-size:2vw;
+	font-family: Arial, Helvetica, sans-serif;
+	white-space:pre-wrap;
+	line-height:120%;
+	
+	width:50vw;
+	height:12vw;
+	
+	top:22vw;
+	left:5vw;
+	
+	z-index:2;
+	
+	color:#0F104B;
+	background-color:#2F30B4;
+	border:2px solid #0F104B;
+}
+.bb_upg_desc_bt {
+	position:absolute;
+	
+	text-align:center;
+	font-size:2.5vw;
+	font-family: Arial, Helvetica, sans-serif;
+	text-indent:-0.1vw;
+	line-height:3.2vw;
+	
+	width:3vw;
+	height:3vw;
+	
+	left:55.1vw;
+	
+	z-index:3;
+	
+	color:#0F104B;
+	background-color:#2F30B4;
+	border:2px solid #0F104B;
+}
+#bb_upg_close {
+	top:22vw;
+}
+#bb_upg_buy {
+	top:25vw;
+}
+
+
+
+.mv {
+	position:absolute;
+	
+	text-align:center;
+	font-size:2.4vw;
+	font-family: Arial, Helvetica, sans-serif;
+	
+	width:16vw;
+	height:3vw;
+	
+	left:84vw;
+	
+	margin:0;
+	margin-top:0.05vw;
+	margin-left:0.05vw;
+	
+	z-index:3;
+	
+	border:2px solid #4E4E4E;
+}
+#mv_menu_mf {
+	color:#7C7C7C;
+	background-color:#CCCCCC;
+}
+#mv_menu_bb {
+	display:none;
+	top:3vw;
+	color:#140A64;
+	background-color:#5D4BFE;
+}
+#mv_bckgrnd {
+	position:absolute;
+	width:16vw;
+	height:calc(100vw / 1.87);
+	z-index:2;
+	left:84vw;
+	background-color:#1C1C1C;
+	border:4px solid #4E4E4E;
+}
+
+.info {
+	position:absolute;
+	
+	text-align:left;
+	line-height:3vw;
+	text-indent:0.2vw;
+	font-size:1.7vw;
+	font-family: Arial, Helvetica, sans-serif;
+	
+	width:16vw;
+	height:3vw;
+	
+	display:none;
+	
+	margin:0;
+	margin-top:0.05vw;
+	margin-left:0.05vw;
+	
+	z-index:3;
+	
+	border:2px solid #4E4E4E;
+}
+#info_coins {
+	color:#FFFF00;
+	background-color:#8C8C00; /* Дели на 60 цвет из color */
+}
+#info_rage {
+	color:#E04C0F;
+	top:3vw;
+	background-color:#7B2A08;
+}
+#info_shards {
+	color:#5845FE;
+	top:6vw;
+	background-color:#30268C;
+}
+#info_bckgrnd {
+	position:absolute;
+	width:16vw;
+	height:calc(100vw / 1.87);
+	z-index:2;
+	background-color:#1C1C1C;
+	border:4px solid #4E4E4E;
+}
+
+.loc_name {
+	position:absolute;
+	text-align:center;
+	font-family: Arial, Helvetica, sans-serif;
+	width:30vw;
+	height:5vw;
+	top:0.4vw;
+	left:35vw;
+	font-size:3.4vw;
+}
+#name_mf {
+	color:#959595;
+}
+#name_bb {
+	color:#2917B9;
+}
