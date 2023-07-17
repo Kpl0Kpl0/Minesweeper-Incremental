@@ -11,8 +11,8 @@ html, body {
 	position:absolute;
 	/*background-color:#A9A9A9;
 	border:2px solid #FF0000;*/
-	width:500vw;
-	height:500vw;
+	width:100vw;
+	height:100vw;
 }
 
 #field {
@@ -123,7 +123,7 @@ html, body {
 	z-index:2;
 	
 	color:#0F104B;
-	background-color:#2F30B4;
+	background-color:#2B2CA5;
 	border:2px solid #0F104B;
 }
 .bb_upg_desc_bt {
