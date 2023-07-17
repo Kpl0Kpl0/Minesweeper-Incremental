@@ -11,8 +11,8 @@ html, body {
 	position:absolute;
 	/*background-color:#A9A9A9;
 	border:2px solid #FF0000;*/
-	width:100vw;
-	height:100vw;
+	width:500vw;
+	height:500vw;
 }
 
 #field {
