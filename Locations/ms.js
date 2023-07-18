@@ -18,6 +18,7 @@ bt_get_coins.onclick = function() {
 bt_big_bang.onclick = function() {
 	let gain = MATH.plr.shards()[0];
 	if (gain > 0) {
+		MATH.plr.progress(12);
 		MATH.field.restart();
 		MATH.reset.upg();
 		MATH.reset.cur1();

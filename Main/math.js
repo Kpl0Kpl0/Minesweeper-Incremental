@@ -69,6 +69,7 @@ const MATH = {
 	upg: {
 		buy: {
 			one(id, type) {
+				
 				let upgr = STATS.upgs[type][id],
 					cost = upgr.cost[0],
 					cur = upgr.cost[4],
@@ -76,6 +77,9 @@ const MATH = {
 					math_eff = MATH.upg.eff(id, type),
 					math_max = MATH.upg.max(id, type),
 					m = STATS.plr.main;
+				
+				MATH.plr.progress(id+2);
+				
 				if (m[cur] >= cost && math_max == 1) {
 					m[cur] -= cost;
 					upgr.lvl++;
@@ -83,9 +87,11 @@ const MATH = {
 					upgr.eff[0] = math_eff;
 					eval(upgr.code);
 				}
+				
 			},
 			all(id, type) {
 				while (true) {
+					
 					let upgr = STATS.upgs[type][id],
 						cost = upgr.cost[0],
 						cur = upgr.cost[4],
@@ -93,6 +99,9 @@ const MATH = {
 						math_eff = MATH.upg.eff(id, type),
 						math_max = MATH.upg.max(id, type),
 						m = STATS.plr.main;
+					
+					MATH.plr.progress(id+2);
+					
 					if (m[cur] >= cost && math_max == 1) {
 						m[cur] -= cost;
 						upgr.lvl++;
@@ -101,6 +110,7 @@ const MATH = {
 						eval(upgr.code);
 					}
 					else {break}
+					
 				}
 			}
 		},
@@ -124,7 +134,7 @@ const MATH = {
 			else if (mode == "l*") {cur = starter * coef * (lvl+1)}
 			else if (mode == "l**") {cur = starter * coef ** (lvl+1)}
 			
-			return cur ;
+			return cur;
 		},
 		eff(id, type) {
 			let upgr = STATS.upgs[type][id],
@@ -162,24 +172,28 @@ const MATH = {
 		score() {
 			let o = STATS.plr.other,
 				upgr = STATS.upgs['upg'],
+				bb_upgr = STATS.upgs['bb_upg'],
 				eff_1 = upgr[0].eff[0],
 				eff_2 = upgr[2].eff[0],
 				eff_3 = upgr[5].eff[0],
 				eff_4 = upgr[8].eff[0],
+				eff_5 = bb_upgr[0].eff[0],
 				boost = o.boost,
 				score = o.score,
 				mult = score ** (2 + eff_4);
-			return mult * eff_1 * eff_2 * eff_3 * boost;
+			return mult * eff_1 * eff_2 * eff_3 * eff_5 * boost;
 		},
 		rage() {
 			let o = STATS.plr.other,
 				upgr = STATS.upgs['upg'],
+				bb_upgr = STATS.upgs['bb_upg'],
 				lvl_1 = upgr[4].lvl,
 				lvl_2 = upgr[6].lvl,
 				lvl_3 = upgr[9].lvl,
 				eff_1 = 0,
 				eff_2 = 0,
 				eff_3 = upgr[1].eff[0],
+				eff_4 = bb_upgr[1].eff[0],
 				coin_length = String(Math.floor(STATS.plr.main.coins)).length,
 				boost = o.boost;
 			if (lvl_1 > 0) {
@@ -189,16 +203,23 @@ const MATH = {
 				if (lvl_3 == 1) {eff_2 = coin_length}
 				else {eff_2 = 1}
 			}
-			return eff_1 * eff_2 * boost;
+			return eff_1 * eff_2 * eff_4 * boost;
 		},
 		shards() {
 			let m = STATS.plr.main,
 				o = STATS.plr.other,
+				coins = m.coins,
+				
 				reb = STATS.reb["bb"],
 				cost = reb.cost,
 				coef = reb.coef,
-				coins = m.coins,
+				
+				bb_upgr = STATS.upgs['bb_upg'],
+				eff_1 = bb_upgr[2].eff[0],
 				boost = o.boost,
+				
+				final_boost = eff_1 * boost; // Counting boost
+				
 				count = 1,
 				gain = 0,
 				one = 1,
@@ -206,15 +227,16 @@ const MATH = {
 			for (i = coins; i >= cost*10**coef; coef++) {
 				count++; 
 				math_cost = cost*10**(coef + count);
-				gain = (count - 1) * boost;
+				gain = (count - 1) * final_boost;
 			}
-			one = 1 * boost;
+			one = 1 * final_boost;
 			return [gain, math_cost, one];
 		},
 		progress(num) {
 			let o = STATS.plr.other;
 			if (num > o.progress) {
 				o.progress = num;
+				console.log("Progress updated: " + num);
 			}
 		}
 	},

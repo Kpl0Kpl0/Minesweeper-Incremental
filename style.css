@@ -96,10 +96,10 @@ html, body {
 	top:36vw;
 	left:-0.1vw;
 }
-#bb_upg_bt_comfort {
+#bt_bb_upg_comfort {
 	left:20vw;
 }
-#bb_upg_bt_abilities {
+#bt_bb_upg_abilities {
 	left:40vw;
 }
 
@@ -138,7 +138,7 @@ html, body {
 	width:3vw;
 	height:3vw;
 	
-	left:55.1vw;
+	left:55.2vw;
 	
 	z-index:3;
 	

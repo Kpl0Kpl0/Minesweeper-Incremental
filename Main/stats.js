@@ -21,9 +21,9 @@ var STATS = {
 			progress: 0,
 			score: 0,
 			lose: 0,
-			bb_screen: 1,
+			bb_screen: 'power',
 			bb_upg: 0,
-			boost: 10000000
+			boost: 1
 		}
 	},
 	upgs: {
@@ -33,8 +33,7 @@ var STATS = {
 				eff: [1, 2, "c*", 1], 
 				cost: [1, 4, "c*", 1, "coins"], 
 				max: [50, 50], 
-				code: "upg2.style.display = 'block';" +
-					"MATH.plr.progress(2)",
+				code: "upg2.style.display = 'block';",
 				desc: "coin gain is multiplied by 2",
 				clr: ["D2D280", "93935A", "8C8C4B", "626234"]
 				// Пояснение: 1-ый - светлый для задника, 2-ой - темный для задника
@@ -47,7 +46,7 @@ var STATS = {
 				eff: [1, 2, "c*", 1], 
 				cost: [100, 1000, "c*", 100, "coins"], 
 				max: [9, 9], 
-				code: "upg3.style.display = 'block'",
+				code: "upg3.style.display = 'block';",
 				desc: "reduces the number of mines on the field", 
 				clr: ["D2D280", "93935A", "8C8C4B", "626234"]
 			},
@@ -56,7 +55,7 @@ var STATS = {
 				eff: [1, 10, "l*", 1], 
 				cost: [1000, 100, "c*", 1000, "coins"], 
 				max: [10, 10], 
-				code: "upg4.style.display = 'block'",
+				code: "upg4.style.display = 'block';",
 				desc: "coin gain is multiplied by 10", 
 				clr: ["D2D280", "93935A", "8C8C4B", "626234"]
 			},
@@ -65,7 +64,7 @@ var STATS = {
 				eff: [0, 1, "c+", 0], 
 				cost: [10000, 10, "c*", 10000, "coins"], 
 				max: [25, 25], 
-				code:  "upg5.style.display = 'block'" ,
+				code:  "upg5.style.display = 'block';",
 				desc: "when you open a mine adds X% of the coins you were supposed to get (X - level)", 
 				clr: ["D2D280", "93935A", "8C8C4B", "626234"]
 			},
@@ -128,39 +127,39 @@ var STATS = {
 			}
 		],
 		bb_upg: [
-				/* pc1 */{
-					lvl: 0, 
-					eff: [1, 3, "c*", 1], 
-					cost: [1, 2, "c*", 1, "shards"], 
-					max: [10, 10], 
-					code: "",
-					name: ["pc1", "power coins 1"], 
-					desc: "coin gain is multiplied by 3", 
-					type: "bb_p", 
-					cords: [2, 22]
-				},
-				/* pr1 */{
-					lvl: 0, 
-					eff: [1, 2, "c*", 1], 
-					cost: [1, 2, "c*", 1, "shards"], 
-					max: [10, 10], 
-					code: "",
-					name: ["pr1", "power rage 1"], 
-					desc: "rage gain is multiplied by 2", 
-					type: "bb_p", 
-					cords: [2, 28]
-				},
-				/* ps1 */{
-					lvl: 0, 
-					eff: [1, 2, "c*", 1], 
-					cost: [3, 2, "c*", 3, "shards"], 
-					max: [10, 10], 
-					code: "",
-					name: ["ps1", "power shards 1"], 
-					desc: "shards gain is multiplied by 2", 
-					type: "bb_p", 
-					cords: [2, 34]
-				}
+			/* pc1 */{
+				lvl: 0, 
+				eff: [1, 3, "c*", 1], 
+				cost: [1, 2, "c*", 1, "shards"], 
+				max: [10, 10], 
+				code: "",
+				name: ["pc1", "Power Coins 1"], 
+				desc: "coin gain is multiplied by 3", 
+				type: "power", 
+				cords: [2, 22]
+			},
+			/* pr1 */{
+				lvl: 0, 
+				eff: [1, 2, "c*", 1], 
+				cost: [1, 2, "c*", 1, "shards"], 
+				max: [10, 10], 
+				code: "",
+				name: ["pr1", "Power Rage 1"], 
+				desc: "rage gain is multiplied by 2", 
+				type: "power", 
+				cords: [2, 28]
+			},
+			/* ps1 */{
+				lvl: 0, 
+				eff: [1, 2, "c*", 1], 
+				cost: [3, 2, "c*", 3, "shards"], 
+				max: [10, 10], 
+				code: "",
+				name: ["ps1", "Power Shards 1"], 
+				desc: "shards gain is multiplied by 2", 
+				type: "power", 
+				cords: [2, 34]
+			}
 		]
 	},
 	reb: {

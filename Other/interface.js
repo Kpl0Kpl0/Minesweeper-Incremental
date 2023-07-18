@@ -112,17 +112,27 @@ function update() {
 			desc = upgr.desc,
 			lvl = upgr.lvl,
 			max = upgr.max[0],
-			name = upgr.name[0],
+			name = upgr.name[1],
 			desc_cost = "";
 			
 		if (lvl == max && max > 0) {desc_cost = "\n<b>Cost:</b> MAX"
 		} else {desc_cost = "\n<b>Cost:</b> " + abbrNum(cost) + " " + cur}
 		
-		bb_upg_desc.innerHTML = "[" + name + "] <b>Level " + lvl + " / " + max + "</b>\n<b>Effect</b>: " + desc  +  desc_cost;
+		bb_upg_desc.innerHTML = "<b>" + name + "</b>\n<b>Level " + lvl + " / " + max + "</b>\n<b>Effect</b>: " + desc  +  desc_cost;
 	} else {
 		bb_upg_desc.style.display = "none";
 		bb_upg_close.style.display = "none";
 		bb_upg_buy.style.display = "none";
+	}
+	
+	// Обновление экрана описания bb улучшений
+	let bb_upgr = STATS.upgs['bb_upg'],
+		bb_screen = STATS.plr.other.bb_screen;
+	for (i = 0; i < bb_upgr.length; i++) {
+		let upg = document.getElementById(bb_upgr[i].name[0]);
+		if (bb_upgr[i].type == bb_screen) {
+			upg.style.display = "block";
+		} else { upg.style.display = "none"; }
 	}
 }
 timer = setInterval(update,10);

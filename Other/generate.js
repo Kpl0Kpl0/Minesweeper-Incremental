@@ -82,7 +82,7 @@ function generate_bb_upgrades() {
 		upg.style.top = upgr.cords[0] + "vw";
 		upg.style.left = upgr.cords[1] + "vw";
 		upg.style.color = "#0F104B";
-		upg.style.border = "4px solid #0F104B";
+		upg.style.border = "2px solid #0F104B";
 		upg.style.backgroundColor = "#2F30B4";
 		bb_upg_window.appendChild(upg);
 	}
