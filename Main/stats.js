@@ -23,7 +23,7 @@ var STATS = {
 			lose: 0,
 			bb_screen: 'power',
 			bb_upg: 1,
-			boost: 1000000,
+			boost: 1,
 			version: 1
 		}
 	},
