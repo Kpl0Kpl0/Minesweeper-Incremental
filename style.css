@@ -1,6 +1,6 @@
 * {
 	user-select: none;
-	overflow: hidden;
+	overflow:hidden;
 }
 
 html, body {
@@ -13,6 +13,7 @@ html, body {
 	border:2px solid #FF0000;*/
 	width:100vw;
 	height:100vw;
+	overflow-y: auto;
 }
 
 #field {
@@ -57,6 +58,9 @@ html, body {
 #menu_bb {
 	background-color:#101130;
 	/*3D3FB7*/
+}
+#menu_sett {
+	background-color:#616161;
 }
 
 .bt {
@@ -109,7 +113,7 @@ html, body {
 	display:block;
 	
 	text-align:center;
-	font-size:2vw;
+	font-size:1.9vw;
 	font-family: Arial, Helvetica, sans-serif;
 	white-space:pre-wrap;
 	line-height:120%;
@@ -123,7 +127,7 @@ html, body {
 	z-index:2;
 	
 	color:#0F104B;
-	background-color:#2B2CA5;
+	background-color:#3233B3;
 	border:2px solid #0F104B;
 }
 .bb_upg_desc_bt {
@@ -132,8 +136,6 @@ html, body {
 	text-align:center;
 	font-size:2.5vw;
 	font-family: Arial, Helvetica, sans-serif;
-	text-indent:-0.1vw;
-	line-height:3.2vw;
 	
 	width:3vw;
 	height:3vw;
@@ -142,15 +144,17 @@ html, body {
 	
 	z-index:3;
 	
-	color:#0F104B;
+	color:#2A2A2A;
 	background-color:#2F30B4;
 	border:2px solid #0F104B;
 }
 #bb_upg_close {
 	top:22vw;
+	background-color:#AE5B4E;
 }
 #bb_upg_buy {
 	top:25vw;
+	background-color:#60C157;
 }
 
 
@@ -184,6 +188,11 @@ html, body {
 	top:3vw;
 	color:#140A64;
 	background-color:#5D4BFE;
+}
+#mv_menu_sett {
+	top:50.7vw;
+	color:#565656;
+	background-color:#9A9A9A;
 }
 #mv_bckgrnd {
 	position:absolute;
@@ -255,4 +264,20 @@ html, body {
 }
 #name_bb {
 	color:#2917B9;
+}
+
+.bt_sett {
+	position:absolute;
+	text-align:center;
+	font-size:2.4vw;
+	line-height:3.2vw;
+	font-family: Arial, Helvetica, sans-serif;
+	width:18vw;
+	height:3vw;
+	background-color:#9C1E1E;
+}
+#bt_hard_reset {
+	top:6vw;
+	left:41vw;
+	z-index:3;
 }

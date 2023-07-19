@@ -34,7 +34,7 @@ function generate_upgrades() {
 		upg.style.width ="16vw";
 		upg.style.height ="8vw";
 		upg.style.position = "absolute";
-		upg.style.fontSize = "1.2vw";
+		upg.style.fontSize = "1.1vw";
 		upg.style.fontFamily = "Arial, Helvetica, sans-serif";
 		upg.style.textAlign = "center";
 		upg.style.whiteSpace = "pre-wrap";
@@ -72,11 +72,10 @@ function generate_bb_upgrades() {
 		upg.style.width ="4vw";
 		upg.style.height ="4vw";
 		upg.style.position = "absolute";
-		upg.style.fontSize = "2vw";
+		upg.style.fontSize = "1.8vw";
 		upg.style.fontFamily = "Arial, Helvetica, sans-serif";
 		upg.style.textAlign = "center";
 		upg.style.whiteSpace = "pre-wrap";
-		upg.style.lineHeight = "120%";
 		upg.style.cursor = "pointer";
 		
 		upg.style.top = upgr.cords[0] + "vw";

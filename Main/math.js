@@ -78,9 +78,11 @@ const MATH = {
 					math_max = MATH.upg.max(id, type),
 					m = STATS.plr.main;
 				
-				MATH.plr.progress(id+2);
-				
 				if (m[cur] >= cost && math_max == 1) {
+					
+					// Повышает прогресс
+					MATH.plr.progress(id+2);
+					
 					m[cur] -= cost;
 					upgr.lvl++;
 					upgr.cost[0] = math_cost;
@@ -100,9 +102,11 @@ const MATH = {
 						math_max = MATH.upg.max(id, type),
 						m = STATS.plr.main;
 					
-					MATH.plr.progress(id+2);
-					
 					if (m[cur] >= cost && math_max == 1) {
+						
+						// Повышает прогресс
+						MATH.plr.progress(id+2);
+						
 						m[cur] -= cost;
 						upgr.lvl++;
 						upgr.cost[0] = math_cost;
@@ -216,20 +220,23 @@ const MATH = {
 				
 				bb_upgr = STATS.upgs['bb_upg'],
 				eff_1 = bb_upgr[2].eff[0],
-				boost = o.boost,
+				cost_1 = bb_upgr[3].eff[0],
+				boost = o.boost / o.boost,
 				
 				final_boost = eff_1 * boost; // Counting boost
 				
-				count = 1,
+				count = 0,
 				gain = 0,
 				one = 1,
 				math_cost = cost*10**coef;
-			for (i = coins; i >= cost*10**coef; coef++) {
+				
+			for (i = 0; coins >= cost * 10 **(coef + i - cost_1); i++) {
 				count++; 
-				math_cost = cost*10**(coef + count);
-				gain = (count - 1) * final_boost;
 			}
+			math_cost = cost*10**(coef + count - cost_1);
+			gain = count * final_boost;
 			one = 1 * final_boost;
+			
 			return [gain, math_cost, one];
 		},
 		progress(num) {

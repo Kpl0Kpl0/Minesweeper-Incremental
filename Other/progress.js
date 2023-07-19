@@ -35,73 +35,81 @@ function upg_storage(id, type, task) {
 }
 
 
-
-function load_progress() {
-	
-	let m = STATS.plr.main,
-		o = STATS.plr.other;
-	
-	
-	function load_stats(name, type) {
-		if (localStorage.getItem(name) != null) {
-			STATS.plr[type][name] = Number(localStorage.getItem(name));
+var LOAD = {
+	load_version() {
+		function load_stats(name, type) {
+			if (localStorage.getItem(name) != null) {
+				STATS.plr[type][name] = Number(localStorage.getItem(name));
+			}
 		}
-	}
-	load_stats('coins', 'main');
-	load_stats('rage', 'main');
-	load_stats('shards', 'main');
-	load_stats('progress', 'other');
-	
-	
-	
-	for (let i = 0; i < STATS.upgs['upg'].length; i++) {
-		upg_storage(i, 'upg', 'load');
-	}
-	for (let i = 0; i < STATS.upgs['bb_upg'].length; i++) {
-		upg_storage(i, 'bb_upg', 'load');
-	}
-	
-	
-	function load_upgs(num) {
-		for (let i = 0; i < num; i++) {
-			let upg = document.getElementById("upg" + (i+1));
-			upg.style.display = "block";
+		load_stats('version', 'other');
+	},
+	load_progress() {
+		
+		let m = STATS.plr.main,
+			o = STATS.plr.other;
+		
+		
+		function load_stats(name, type) {
+			if (localStorage.getItem(name) != null) {
+				STATS.plr[type][name] = Number(localStorage.getItem(name));
+			}
 		}
-	}
-	if (o.progress < STATS.upgs['upg'].length) { load_upgs(o.progress) }
-	else { load_upgs(STATS.upgs['upg'].length) }
-	
-	
-	
-	function load_bb_upgs(num) {
-		let upgr = STATS.upgs['bb_upg'];
-		for (let i = 0; i < upgr.length; i++) {
-			let bb_upg = document.getElementById(upgr[i].name[0]);
-			bb_upg.style.display = "block";
+		load_stats('coins', 'main');
+		load_stats('rage', 'main');
+		load_stats('shards', 'main');
+		load_stats('progress', 'other');
+		
+		
+		
+		for (let i = 0; i < STATS.upgs['upg'].length; i++) {
+			upg_storage(i, 'upg', 'load');
 		}
-	}
-	 load_bb_upgs(STATS.upgs['bb_upg'].length);
-	
-	
-	
-	progr_display = [
-		1, 'info_coins.style.display = "block"',
-		6, 'info_rage.style.display = "block"',
-		11, 'bt_big_bang.style.display = "block"',
-		12, 'info_shards.style.display = "block"',
-		12, 'mv_menu_bb.style.display = "block"'
-	]
-	for (let i = 0; i < progr_display.length; i+=2) {
-		if (o.progress >= progr_display[i]) {
-			eval(progr_display[i+1]);
-		} else {
-			break;
+		for (let i = 0; i < STATS.upgs['bb_upg'].length; i++) {
+			upg_storage(i, 'bb_upg', 'load');
 		}
+		
+		
+		function load_upgs(num) {
+			for (let i = 0; i < num; i++) {
+				let upg = document.getElementById("upg" + (i+1));
+				upg.style.display = "block";
+			}
+		}
+		if (o.progress < STATS.upgs['upg'].length) { load_upgs(o.progress) }
+		else { load_upgs(STATS.upgs['upg'].length) }
+		
+		
+		
+		function load_bb_upgs(num) {
+			let upgr = STATS.upgs['bb_upg'];
+			for (let i = 0; i < upgr.length; i++) {
+				let bb_upg = document.getElementById(upgr[i].name[0]);
+				bb_upg.style.display = "block";
+			}
+		}
+		 load_bb_upgs(STATS.upgs['bb_upg'].length);
+		
+		
+		
+		progr_display = [
+			1, 'info_coins.style.display = "block"',
+			6, 'info_rage.style.display = "block"',
+			11, 'bt_big_bang.style.display = "block"',
+			12, 'info_shards.style.display = "block"',
+			12, 'mv_menu_bb.style.display = "block"'
+		]
+		for (let i = 0; i < progr_display.length; i+=2) {
+			if (o.progress >= progr_display[i]) {
+				eval(progr_display[i+1]);
+			} else {
+				break;
+			}
+		}
+		
 	}
-	
 }
-load_progress();
-
+LOAD.load_version();
 
 
 function save_progress() {
@@ -111,7 +119,8 @@ function save_progress() {
 		coins = m.coins,
 		rage = m.rage,
 		shards = m.shards,
-		progress = o.progress;
+		progress = o.progress,
+		version = o.version;
 	
 	
 	
@@ -119,6 +128,7 @@ function save_progress() {
 	localStorage.setItem('rage', rage);
 	localStorage.setItem('shards', shards);
 	localStorage.setItem('progress', progress);
+	localStorage.setItem('version', version);
 	
 	
 	

@@ -1,13 +1,16 @@
-function move(id){
-	let menus = [menu_mf, menu_bb];
-	for (i = 0; i < menus.length; i++) {
-		if (i == id) {menus[i].style.display = "block"}
-		else {menus[i].style.display = "none";}
+const MOVES = {
+	move(id){
+		let menus = [menu_mf, menu_bb, menu_sett];
+		for (i = 0; i < menus.length; i++) {
+			if (i == id) {menus[i].style.display = "block"}
+			else {menus[i].style.display = "none";}
+		}
 	}
 }
 
-mv_menu_mf.onclick = function() { move(0)}
-mv_menu_bb.onclick = function() { move(1)}
+mv_menu_mf.onclick = function() { MOVES.move(0)}
+mv_menu_bb.onclick = function() { MOVES.move(1)}
+mv_menu_sett.onclick = function() { MOVES.move(2)}
 
 function update() {
 	// Обновление стиля кнопок
@@ -99,30 +102,73 @@ function update() {
 		}
 	}
 	
+	// Путь к основным и дополнительным статам игрока
+	let o = STATS.plr.other,
+		m = STATS.plr.main;
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+	
+	// Кнопки улучшений в big bang'е яркие если их можно купить (хватает кристаллов)
+	let bb_upgr2 = STATS.upgs['bb_upg'];
+	
+	// Просматриваем все bb улучшения
+	for (i = 0; i < bb_upgr2.length; i++) {
+		
+		// Находим имя улучшения
+		let bb_upgr2_id = document.getElementById(bb_upgr2[i].name[0]);
+		
+		// Если шардов на улучшение хватает, то...
+		if (bb_upgr2[i].cost[0] <= m.shards) {
+			
+			// Кнопка светлая
+			bb_upgr2_id.style.backgroundColor = '#2F30B4';
+			
+		} else {
+			
+			// Кнопка темная
+			bb_upgr2_id.style.backgroundColor = '#262790';
+			
+		}
+	}
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+	
 	// Обновление описания bb улучшений
-	let o = STATS.plr.other;
 	if (o.bb_upg > 0) {
-		bb_upg_desc.style.display = "block";
-		bb_upg_close.style.display = "block";
-		bb_upg_buy.style.display = "block";
+		
 		let upgr = STATS.upgs['bb_upg'][o.bb_upg-1],
-			num = upgr.name[0], 
 			cur = upgr.cost[4],
 			cost =  upgr.cost[0],
 			desc = upgr.desc,
 			lvl = upgr.lvl,
 			max = upgr.max[0],
-			name = upgr.name[1],
-			desc_cost = "";
-			
+			name1 = upgr.name[0],
+			name2 = upgr.name[1],
+			desc_cost = "",
+			upg_id = document.getElementById(name1);
+		
+		// Показывает кнопки описания и само описание
+		bb_upg_desc.style.display = "block";
+		bb_upg_close.style.display = "block";
+		// Если кристаллов хватает, то показывает кнопку покупки
+		if (upgr.cost[0] <= m.shards) {
+			bb_upg_buy.style.display = "block";
+		} else {
+			bb_upg_buy.style.display = "none";
+		}
+		
 		if (lvl == max && max > 0) {desc_cost = "\n<b>Cost:</b> MAX"
 		} else {desc_cost = "\n<b>Cost:</b> " + abbrNum(cost) + " " + cur}
 		
-		bb_upg_desc.innerHTML = "<b>" + name + "</b>\n<b>Level " + lvl + " / " + max + "</b>\n<b>Effect</b>: " + desc  +  desc_cost;
+		bb_upg_desc.innerHTML = "[" + name1 + "] <b>" + name2 + "</b>\n<b>Level " + lvl + " / " + max + "</b>\n<b> Effect</b>: " + desc  +  desc_cost;
+		
 	} else {
+		
+		// Скрывает кнопки описания и само описание
 		bb_upg_desc.style.display = "none";
 		bb_upg_close.style.display = "none";
 		bb_upg_buy.style.display = "none";
+		
 	}
 	
 	// Обновление экрана описания bb улучшений
@@ -135,4 +181,4 @@ function update() {
 		} else { upg.style.display = "none"; }
 	}
 }
-timer = setInterval(update,10);
+timer = setInterval(update,25);
