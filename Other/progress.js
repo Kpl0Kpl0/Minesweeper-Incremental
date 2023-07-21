@@ -9,7 +9,9 @@ function upg_storage(id, type, task) {
 		m1 = ['lvl', 'upgr.lvl',
 		'eff', 'upgr.eff',
 		'cost', 'upgr.cost',
-		'max', 'upgr.max'];
+		'max', 'upgr.max',
+		'visible', 'upgr.visible',
+		'resettable', 'upgr.resettable'];
 		
 		
 		
@@ -106,6 +108,8 @@ var LOAD = {
 				break;
 			}
 		}
+		
+		console.log('Current progress: ' + o.progress)
 		
 	}
 }

@@ -81,7 +81,7 @@ const MATH = {
 				if (m[cur] >= cost && math_max == 1) {
 					
 					// Повышает прогресс
-					MATH.plr.progress(id+2);
+					if (type == 'upg') MATH.plr.progress(id+2);
 					
 					m[cur] -= cost;
 					upgr.lvl++;
@@ -105,7 +105,7 @@ const MATH = {
 					if (m[cur] >= cost && math_max == 1) {
 						
 						// Повышает прогресс
-						MATH.plr.progress(id+2);
+						if (type == 'upg') MATH.plr.progress(id+2);
 						
 						m[cur] -= cost;
 						upgr.lvl++;
@@ -182,10 +182,11 @@ const MATH = {
 				eff_3 = upgr[5].eff[0],
 				eff_4 = upgr[8].eff[0],
 				eff_5 = bb_upgr[0].eff[0],
+				eff_6 = bb_upgr[3].eff[0],
 				boost = o.boost,
 				score = o.score,
 				mult = score ** (2 + eff_4);
-			return mult * eff_1 * eff_2 * eff_3 * eff_5 * boost;
+			return mult * eff_1 * eff_2 * eff_3 * eff_5 * eff_6 * boost;
 		},
 		rage() {
 			let o = STATS.plr.other,
@@ -198,6 +199,7 @@ const MATH = {
 				eff_2 = 0,
 				eff_3 = upgr[1].eff[0],
 				eff_4 = bb_upgr[1].eff[0],
+				eff_5 = bb_upgr[4].eff[0],
 				coin_length = String(Math.floor(STATS.plr.main.coins)).length,
 				boost = o.boost;
 			if (lvl_1 > 0) {
@@ -207,7 +209,7 @@ const MATH = {
 				if (lvl_3 == 1) {eff_2 = coin_length}
 				else {eff_2 = 1}
 			}
-			return eff_1 * eff_2 * eff_4 * boost;
+			return eff_1 * eff_2 * eff_4 * eff_5 * boost;
 		},
 		shards() {
 			let m = STATS.plr.main,
@@ -220,10 +222,11 @@ const MATH = {
 				
 				bb_upgr = STATS.upgs['bb_upg'],
 				eff_1 = bb_upgr[2].eff[0],
-				cost_1 = bb_upgr[3].eff[0],
+				eff_2 = bb_upgr[5].eff[0],
+				cost_1 = bb_upgr[7].eff[0],
 				boost = o.boost / o.boost,
 				
-				final_boost = eff_1 * boost; // Counting boost
+				final_boost = eff_1 * eff_2 * boost; // Counting boost
 				
 				count = 0,
 				gain = 0,
@@ -251,10 +254,12 @@ const MATH = {
 		upg() {
 			let upgr = STATS.upgs['upg'];
 			for (i = 0; i < upgr.length; i++) {
-				upgr[i].cost[0] = upgr[i].cost[3];
-				upgr[i].eff[0] = upgr[i].eff[3];
-				upgr[i].max[0] = upgr[i].max[1];
-				upgr[i].lvl = 0;
+				if (upgr[i].resettable == 1) {
+					upgr[i].cost[0] = upgr[i].cost[3];
+					upgr[i].eff[0] = upgr[i].eff[3];
+					upgr[i].max[0] = upgr[i].max[1];
+					upgr[i].lvl = 0;
+				}
 			}
 		},
 		cur1() {

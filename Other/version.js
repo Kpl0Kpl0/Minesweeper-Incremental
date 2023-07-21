@@ -23,12 +23,64 @@ function update_version() {
 		
 	}
 	
+	function compensation(id, type) {
+		
+		function get_item(name) {
+			return JSON.parse(localStorage.getItem(String(type) + "_" + name + String(id)));
+		}
+		
+		let lvl = get_item('lvl');
+		
+		if (lvl > 0) {
+			
+			let grow = get_item('cost')[1],
+				grow_type = get_item('cost')[2],
+				starter_cost = get_item('cost')[3],
+				cur_type = get_item('cost')[4],
+				comp = 1;
+			
+			for (i = 0; i < lvl; i++) {
+				
+				if (grow_type == "c*") {comp *= grow}
+				else if (grow_type == "c**") {comp **= grow}
+				else if (grow_type == "l*") {comp = starter_cost * grow * (lvl+1)}
+				else if (grow_type == "l**") {comp = starter_cost * grow ** (lvl+1)}
+				
+			}
+			
+			STATS.plr.main[cur_type] = Number(localStorage.getItem('shards')) + (comp - 1);
+			localStorage.setItem('shards', STATS.plr.main[cur_type])
+			
+			console.log("Compensation: " + (comp - 1) + " " + cur_type);
+			
+		}
+	}
+	
 	if (2 > o.version) {
 		
+		compensation(8, 'upg');
 		clear_upg_storage(8, 'upg');
 		clear_upg_stats(8, 'upg');
 		
 		o.version = 2;
+		console.log('New player version: ' + o.version)
+		
+	}
+	if (3 > o.version) {
+		
+		compensation(0, 'bb_upg');
+		clear_upg_storage(0, 'bb_upg');
+		clear_upg_stats(0, 'bb_upg');
+		
+		compensation(1, 'bb_upg');
+		clear_upg_storage(1, 'bb_upg');
+		clear_upg_stats(1, 'bb_upg');
+		
+		compensation(2, 'bb_upg');
+		clear_upg_storage(2, 'bb_upg');
+		clear_upg_stats(2, 'bb_upg');
+		
+		o.version = 3;
 		console.log('New player version: ' + o.version)
 		
 	}

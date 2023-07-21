@@ -7,11 +7,6 @@ bb_upg_buy.onclick = function() {
 		math_buy = MATH.upg.buy;
 	math_buy.one(o.bb_upg-1, 'bb_upg')
 }
-bb_upg_buy.ondblclick = function() {
-	let o = STATS.plr.other,
-		math_buy = MATH.upg.buy;
-	math_buy.all(o.bb_upg-1, 'bb_upg')
-}
 
 bt_bb_upg_power.onclick = function() {STATS.plr.other.bb_screen = "power"};
 bt_bb_upg_comfort.onclick = function() {STATS.plr.other.bb_screen = "comfort"};

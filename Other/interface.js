@@ -118,7 +118,7 @@ function update() {
 		let bb_upgr2_id = document.getElementById(bb_upgr2[i].name[0]);
 		
 		// Если шардов на улучшение хватает, то...
-		if (bb_upgr2[i].cost[0] <= m.shards) {
+		if (bb_upgr2[i].cost[0] <= m.shards && bb_upgr2[i].lvl != bb_upgr2[i].max[0]) {
 			
 			// Кнопка светлая
 			bb_upgr2_id.style.backgroundColor = '#2F30B4';
@@ -176,7 +176,7 @@ function update() {
 		bb_screen = STATS.plr.other.bb_screen;
 	for (i = 0; i < bb_upgr.length; i++) {
 		let upg = document.getElementById(bb_upgr[i].name[0]);
-		if (bb_upgr[i].type == bb_screen) {
+		if (bb_upgr[i].type == bb_screen && bb_upgr[i].visible == 1) {
 			upg.style.display = "block";
 		} else { upg.style.display = "none"; }
 	}

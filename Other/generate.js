@@ -68,7 +68,9 @@ function generate_bb_upgrades() {
 		upg.setAttribute('onclick', "STATS.plr.other.bb_upg = " + (i+1));
 		upg.setAttribute('ondblclick', "STATS.plr.other.bb_upg = " + (i+1));
 		upg.textContent = upgr.name[0];
+		
 		upg.style.display = "block";
+		
 		upg.style.width ="4vw";
 		upg.style.height ="4vw";
 		upg.style.position = "absolute";
