@@ -58,8 +58,8 @@ var STATS = {
 			/* coins_3 */{
 				lvl: 0, 
 				eff: [1, 10, "l*", 1], 
-				cost: [1000, 100, "c*", 1000, "coins"], 
-				max: [10, 10],
+				cost: [500, 100, "c*", 500, "coins"], 
+				max: [20, 20],
 				resettable: 1,
 				visible: 1,
 				code: "upg4.style.display = 'block';",
@@ -80,7 +80,7 @@ var STATS = {
 			/* coins_5 */{
 				lvl: 0, 
 				eff: [1, 1, "c+", 1], 
-				cost: [1*10**6, 1000, "c*", 1*10**6, "coins"], 
+				cost: [5*10**5, 1000, "c*", 5*10**5, "coins"], 
 				max: [5, 5],
 				resettable: 1,
 				visible: 1,
@@ -104,7 +104,7 @@ var STATS = {
 			/* rage_2 */{
 				lvl: 0, 
 				eff: [1, 0, "c+", 1], 
-				cost: [25, 2, "c*", 25, "rage"], 
+				cost: [20, 2, "c*", 20, "rage"], 
 				max: [1, 1],
 				resettable: 1,
 				visible: 1,
@@ -127,7 +127,7 @@ var STATS = {
 			/* rage_4 */{
 				lvl: 0,
 				eff: [0, 1, "l+", 0],
-				cost: [2000, 8, "c*", 2000, "rage"],
+				cost: [1000, 10, "c*", 1000, "rage"],
 				max: [10, 10],
 				resettable: 1,
 				visible: 1,
@@ -138,7 +138,7 @@ var STATS = {
 			/* rage_5 */{
 				lvl: 0, 
 				eff: [1, 1, "l+", 1], 
-				cost: [5000, 2, "c*", 5000, "rage"], 
+				cost: [3500, 2, "c*", 3500, "rage"], 
 				max: [1, 1],
 				resettable: 1,
 				visible: 1,
@@ -150,14 +150,14 @@ var STATS = {
 		bb_upg: [
 			/* pc1 */{
 				lvl: 0, 
-				eff: [1, 3, "l*", 1], 
+				eff: [1, 5, "l*", 1], 
 				cost: [1, 2, "c*", 1, "shards"], 
 				max: [10, 10], 
 				resettable: 1,
 				visible: 1,
 				code: "",
 				name: ["pc1", "Power Coins 1"], 
-				desc: "coin gain is multiplied by 3", 
+				desc: "coin gain is multiplied by 5", 
 				type: "power", 
 				cords: [2, 22]
 			},
@@ -247,7 +247,8 @@ var STATS = {
 				max: [3, 3], 
 				resettable: 1,
 				visible: 1,
-				code: "STATS.upgs['bb_upg'][6].visible = 1;",
+				code: "STATS.upgs['bb_upg'][6].visible = 1;" +
+					"STATS.upgs['bb_upg'][10].visible = 1;",
 				name: ["cs1", "Comfort Cost 1"], 
 				desc: "reduces Big Bang requirements by 10, unlock new upgrade",
 				type: "comfort", 
@@ -263,18 +264,46 @@ var STATS = {
 				code: "STATS.upgs['upg'][9].resettable = 0;" +
 					"STATS.upgs['bb_upg'][3].visible = 1;" +
 					"STATS.upgs['bb_upg'][4].visible = 1;" +
-					"STATS.upgs['bb_upg'][5].visible = 1;",
+					"STATS.upgs['bb_upg'][5].visible = 1;" + 
+					"STATS.upgs['bb_upg'][9].visible = 1;",
 				name: ["cg2", "Comfort Gameplay 2"], 
 				desc: "Big Bang doesn't reset the fifth rage upgrade, unlock more upgrades",
 				type: "comfort", 
 				cords: [8, 22]
+			},
+			/* cg3 */{
+				lvl: 0,
+				eff: [0, 1, "l*", 0], 
+				cost: [50, 1, "c*", 50, "shards"], 
+				max: [1, 1],
+				resettable: 1,
+				visible: 0,
+				code: "STATS.upgs['upg'][3].resettable = 0;",
+				name: ["cg3", "Comfort Gameplay 3"], 
+				desc: "Big Bang doesn't reset the fourth coin upgrade",
+				type: "comfort", 
+				cords: [14, 22]
+			},
+			/* cl1 */{
+				lvl: 0,
+				eff: [0, 1, "l*", 0], 
+				cost: [25, 1, "c*", 25, "shards"], 
+				max: [1, 1],
+				resettable: 1,
+				visible: 0,
+				code: "STATS.upgs['upg'][3].resettable = 0;" +
+					"STATS.upgs['upg'][3].max[0]+=25",
+				name: ["cl1", "Comfort Level 1"], 
+				desc: "increases limit of the fourth coin upgrade by 25",
+				type: "comfort", 
+				cords: [2, 34]
 			}
 		]
 	},
 	reb: {
 		bb: {
 			cost: 5,
-			coef: 35,
+			coef: 34,
 			cur: "coins",
 			count: 0
 		}

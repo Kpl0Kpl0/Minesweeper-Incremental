@@ -37,21 +37,27 @@ function update_version() {
 				grow_type = get_item('cost')[2],
 				starter_cost = get_item('cost')[3],
 				cur_type = get_item('cost')[4],
-				comp = 1;
+				comp = starter_cost;
 			
-			for (i = 0; i < lvl; i++) {
+			for (i = 0; i < lvl-1; i++) {
 				
-				if (grow_type == "c*") {comp *= grow}
+				if (grow_type == "c*") {comp = comp * grow + comp}
 				else if (grow_type == "c**") {comp **= grow}
 				else if (grow_type == "l*") {comp = starter_cost * grow * (lvl+1)}
 				else if (grow_type == "l**") {comp = starter_cost * grow ** (lvl+1)}
 				
 			}
 			
-			STATS.plr.main[cur_type] = Number(localStorage.getItem('shards')) + (comp - 1);
-			localStorage.setItem('shards', STATS.plr.main[cur_type])
+			STATS.plr.main[cur_type] = Number(localStorage.getItem(cur_type)) + (Math.floor(comp)- 1);
+			localStorage.setItem(cur_type, STATS.plr.main[cur_type])
 			
-			console.log("Compensation: " + (comp - 1) + " " + cur_type);
+			console.log(type + "_" + 
+				id + ": comp " + 
+				comp + ", cur_type " + 
+				cur_type + ", grow " + 
+				grow + ", lvl " + lvl + ", starter " + 
+				starter_cost)
+			console.log("Compensation: " + (Math.floor(comp - 1)) + " " + cur_type);
 			
 		}
 	}
@@ -81,6 +87,36 @@ function update_version() {
 		clear_upg_stats(2, 'bb_upg');
 		
 		o.version = 3;
+		console.log('New player version: ' + o.version)
+		
+	}
+	if (4> o.version) {
+		
+		compensation(2, 'upg');
+		clear_upg_storage(2, 'upg');
+		clear_upg_stats(2, 'upg');
+		
+		compensation(4, 'upg');
+		clear_upg_storage(4, 'upg');
+		clear_upg_stats(4, 'upg');
+		
+		compensation(6, 'upg');
+		clear_upg_storage(6, 'upg');
+		clear_upg_stats(6, 'upg');
+		
+		compensation(8, 'upg');
+		clear_upg_storage(8, 'upg');
+		clear_upg_stats(8, 'upg');
+		
+		compensation(9, 'upg');
+		clear_upg_storage(9, 'upg');
+		clear_upg_stats(9, 'upg');
+		
+		compensation(0, 'bb_upg');
+		clear_upg_storage(0, 'bb_upg');
+		clear_upg_stats(0, 'bb_upg');
+		
+		o.version = 4;
 		console.log('New player version: ' + o.version)
 		
 	}
