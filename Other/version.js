@@ -48,16 +48,10 @@ function update_version() {
 				
 			}
 			
-			STATS.plr.main[cur_type] = Number(localStorage.getItem(cur_type)) + (Math.floor(comp)- 1);
+			STATS.plr.main[cur_type] = Number(localStorage.getItem(cur_type)) + (Math.floor(comp));
 			localStorage.setItem(cur_type, STATS.plr.main[cur_type])
 			
-			console.log(type + "_" + 
-				id + ": comp " + 
-				comp + ", cur_type " + 
-				cur_type + ", grow " + 
-				grow + ", lvl " + lvl + ", starter " + 
-				starter_cost)
-			console.log("Compensation: " + (Math.floor(comp - 1)) + " " + cur_type);
+			console.log("Compensation: " + Math.floor(comp) + " " + cur_type);
 			
 		}
 	}
@@ -117,6 +111,20 @@ function update_version() {
 		clear_upg_stats(0, 'bb_upg');
 		
 		o.version = 4;
+		console.log('New player version: ' + o.version)
+		
+	}
+	if (5> o.version) {
+		
+		compensation(7, 'bb_upg');
+		clear_upg_storage(7, 'bb_upg');
+		clear_upg_stats(7, 'bb_upg');
+		
+		compensation(8, 'bb_upg');
+		clear_upg_storage(8, 'bb_upg');
+		clear_upg_stats(8, 'bb_upg');
+		
+		o.version = 5;
 		console.log('New player version: ' + o.version)
 		
 	}
