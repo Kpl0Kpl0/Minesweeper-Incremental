@@ -259,7 +259,7 @@ var STATS = {
 			/* cg2 */{
 				lvl: 0,
 				eff: [0, 1, "l*", 0], 
-				cost: [15, 1, "c*", 15, "shards"], 
+				cost: [35, 1, "c*", 35, "shards"], 
 				max: [1, 1],
 				resettable: 1,
 				visible: 0,
@@ -276,7 +276,7 @@ var STATS = {
 			/* cg3 */{
 				lvl: 0,
 				eff: [0, 1, "l*", 0], 
-				cost: [50, 1, "c*", 50, "shards"], 
+				cost: [80, 1, "c*", 80, "shards"], 
 				max: [1, 1],
 				resettable: 1,
 				visible: 0,
@@ -318,7 +318,7 @@ var STATS = {
 			/* cc2 */{
 				lvl: 0,
 				eff: [0, 1, "c*", 0], 
-				cost: [5, 2, "l**", 5, "shards"], 
+				cost: [20, 2, "l**", 20, "shards"], 
 				max: [3, 3],
 				resettable: 1,
 				visible: 0,
