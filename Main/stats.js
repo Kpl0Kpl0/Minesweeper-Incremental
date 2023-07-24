@@ -24,7 +24,8 @@ var STATS = {
 			bb_screen: 'power',
 			bb_upg: 0,
 			boost: 1,
-			version: 1
+			version: 1,
+			best_coins: 0
 		}
 	},
 	upgs: {
@@ -59,7 +60,7 @@ var STATS = {
 				lvl: 0, 
 				eff: [1, 10, "l*", 1], 
 				cost: [500, 100, "c*", 500, "coins"], 
-				max: [20, 20],
+				max: [10, 10],
 				resettable: 1,
 				visible: 1,
 				code: "upg4.style.display = 'block';",
@@ -128,7 +129,7 @@ var STATS = {
 				lvl: 0,
 				eff: [0, 1, "l+", 0],
 				cost: [1000, 10, "c*", 1000, "rage"],
-				max: [10, 10],
+				max: [5, 5],
 				resettable: 1,
 				visible: 1,
 				code: "upg10.style.display = 'block'",
@@ -248,9 +249,10 @@ var STATS = {
 				resettable: 1,
 				visible: 1,
 				code: "STATS.upgs['bb_upg'][6].visible = 1;" +
-					"STATS.upgs['bb_upg'][10].visible = 1;",
-				name: ["cs1", "Comfort Cost 1"], 
-				desc: "reduces Big Bang requirements by 10, unlock new upgrade",
+					"STATS.upgs['bb_upg'][10].visible = 1;" +
+					"STATS.upgs['bb_upg'][12].visible = 1;",
+				name: ["cc1", "Comfort Cost 1"], 
+				desc: "reduces Big Bang requirements by 10, unlock more upgrades",
 				type: "comfort", 
 				cords: [2, 28]
 			},
@@ -287,17 +289,71 @@ var STATS = {
 			/* cl1 */{
 				lvl: 0,
 				eff: [0, 1, "l*", 0], 
+				cost: [10, 1, "c*", 10, "shards"], 
+				max: [1, 1],
+				resettable: 1,
+				visible: 0,
+				code: "STATS.upgs['upg'][2].max[0] += 10;" +
+					"STATS.upgs['upg'][2].max[1] += 10;" +
+					"STATS.upgs['bb_upg'][11].visible = 1;" +
+					"STATS.upgs['bb_upg'][13].visible = 1",
+				name: ["cl1", "Comfort Level 1"],
+				desc: "increases limit of the third coin upgrade by 10",
+				type: "comfort", 
+				cords: [2, 34]
+			},
+			/* cr1 */{
+				lvl: 0,
+				eff: [0, 1, "c*", 0], 
+				cost: [9, 1, "c*", 9, "shards"], 
+				max: [1, 1],
+				resettable: 1,
+				visible: 0,
+				code: "STATS.upgs['bb_upg'][14].visible = 1",
+				name: ["cr1", "Comfort Rules 1"], 
+				desc: "you can get rage after the Big Bang",
+				type: "comfort", 
+				cords: [2, 40]
+			},
+			/* cc2 */{
+				lvl: 0,
+				eff: [0, 1, "c*", 0], 
+				cost: [5, 2, "l**", 5, "shards"], 
+				max: [3, 3],
+				resettable: 1,
+				visible: 0,
+				code: "STATS.upgs['upg'][5].cost[0] *= 0.2;",
+				name: ["cc2", "Comfort Cost 2"], 
+				desc: "first rage upgrade are 80% cheaper",
+				type: "comfort", 
+				cords: [8, 28]
+			},
+			/* cl2 */{
+				lvl: 0,
+				eff: [0, 1, "l*", 0], 
 				cost: [25, 1, "c*", 25, "shards"], 
 				max: [1, 1],
 				resettable: 1,
 				visible: 0,
-				code: "STATS.upgs['upg'][3].resettable = 0;" +
-					"STATS.upgs['upg'][3].max[0]+=25",
-				name: ["cl1", "Comfort Level 1"], 
-				desc: "increases limit of the fourth coin upgrade by 25",
+				code: "STATS.upgs['upg'][3].max[0]+=25;",
+				name: ["cl2", "Comfort Level 2"], 
+				desc: "increases limit of the fourth coin upgrade by 25, unlock more upgrades",
 				type: "comfort", 
-				cords: [2, 34]
-			}
+				cords: [8, 34]
+			},
+			/* cr2 */{
+				lvl: 0,
+				eff: [0, 1, "c*", 0], 
+				cost: [99, 1, "c*", 99, "shards"], 
+				max: [1, 1],
+				resettable: 1,
+				visible: 0,
+				code: "",
+				name: ["cr2", "Comfort Rules 2"], 
+				desc: "getting shards depends on the number of all coins earned since the last Big Bang",
+				type: "comfort", 
+				cords: [8, 40]
+			},
 		]
 	},
 	reb: {

@@ -128,6 +128,32 @@ function update_version() {
 		console.log('New player version: ' + o.version)
 		
 	}
+	if (6> o.version) {
+		
+		compensation(2, 'upg');
+		clear_upg_storage(2, 'upg');
+		clear_upg_stats(2, 'upg');
+		
+		compensation(8, 'upg');
+		clear_upg_storage(8, 'upg');
+		clear_upg_stats(8, 'upg');
+		
+		compensation(10, 'bb_upg');
+		clear_upg_storage(10, 'bb_upg');
+		clear_upg_stats(10, 'bb_upg');
+		
+		if (STATS.upgs['bb_upg'][7].lvl > 0) {
+			STATS.upgs['bb_upg'][12].visible = 1;
+		}
+		
+		if (STATS.upgs['bb_upg'][10].lvl > 0) {
+			STATS.upgs['bb_upg'][11].visible = 1;
+		}
+		
+		o.version = 6;
+		console.log('New player version: ' + o.version)
+		
+	}
 	
 	LOAD.load_progress();
 	

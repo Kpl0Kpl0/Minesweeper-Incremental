@@ -18,6 +18,7 @@ bt_get_coins.onclick = function() {
 		info_coins.style.display = "block";
 		upg1.style.display = "block";
 		STATS.plr.main.coins += MATH.plr.coins();
+		STATS.plr.other.best_coins += MATH.plr.coins();
 		MATH.field.restart();
 	}
 }
@@ -33,12 +34,12 @@ bt_big_bang.onclick = function() {
 		// Повышаем прогресс до 12
 		MATH.plr.progress(12);
 		
-		// Сбрасывает минное поле
-		MATH.field.restart();
-		
 		// Выполняем сброс определенных объектов
 		MATH.reset.upg();
 		MATH.reset.cur1();
+		
+		// Сбрасывает минное поле
+		MATH.field.restart();
 		
 		// Добавляет шарды
 		STATS.plr.main.shards += gain;

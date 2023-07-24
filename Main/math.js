@@ -195,6 +195,7 @@ const MATH = {
 				lvl_1 = upgr[4].lvl,
 				lvl_2 = upgr[6].lvl,
 				lvl_3 = upgr[9].lvl,
+				lvl_4 = bb_upgr[11].lvl,
 				eff_1 = 0,
 				eff_2 = 0,
 				eff_3 = upgr[1].eff[0],
@@ -202,7 +203,7 @@ const MATH = {
 				eff_5 = bb_upgr[4].eff[0],
 				coin_length = String(Math.floor(STATS.plr.main.coins)).length,
 				boost = o.boost;
-			if (lvl_1 > 0) {
+			if (lvl_1 > 0 || lvl_4 > 0) {
 				if (lvl_2 == 1) {eff_1 = eff_3}
 				else {eff_1 = 1}
 				
@@ -215,12 +216,14 @@ const MATH = {
 			let m = STATS.plr.main,
 				o = STATS.plr.other,
 				coins = m.coins,
+				best_coins = o.best_coins,
 				
 				reb = STATS.reb["bb"],
 				cost = reb.cost,
 				coef = reb.coef,
 				
 				bb_upgr = STATS.upgs['bb_upg'],
+				lvl_1 = bb_upgr[14].lvl,
 				eff_1 = bb_upgr[2].eff[0],
 				eff_2 = bb_upgr[5].eff[0],
 				cost_1 = bb_upgr[7].eff[0],
@@ -232,9 +235,15 @@ const MATH = {
 				gain = 0,
 				one = 1,
 				math_cost = cost*10**coef;
-				
-			for (i = 0; coins >= cost * 10 **(coef + i - cost_1); i++) {
-				count++; 
+			
+			if (lvl_1 == 0) {
+				for (i = 0; coins >= cost * 10 **(coef + i - cost_1); i++) {
+					count++; 
+				}
+			} else {
+				for (i = 0; best_coins >= cost * 10 **(coef + i - cost_1); i++) {
+					count++; 
+				}
 			}
 			math_cost = cost*10**(coef + count - cost_1);
 			gain = count * final_boost;
@@ -265,6 +274,7 @@ const MATH = {
 		cur1() {
 			STATS.plr.main.coins = 0;
 			STATS.plr.main.rage = 0;
+			STATS.plr.other.best_coins = 0;
 		}
 	}
 };

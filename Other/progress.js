@@ -61,6 +61,7 @@ var LOAD = {
 		load_stats('rage', 'main');
 		load_stats('shards', 'main');
 		load_stats('progress', 'other');
+		load_stats('best_coins', 'other');
 		
 		
 		
@@ -124,7 +125,8 @@ function save_progress() {
 		rage = m.rage,
 		shards = m.shards,
 		progress = o.progress,
-		version = o.version;
+		version = o.version,
+		best_coins = o.best_coins;
 	
 	
 	
@@ -133,6 +135,7 @@ function save_progress() {
 	localStorage.setItem('shards', shards);
 	localStorage.setItem('progress', progress);
 	localStorage.setItem('version', version);
+	localStorage.setItem('best_coins', best_coins);
 	
 	
 	
