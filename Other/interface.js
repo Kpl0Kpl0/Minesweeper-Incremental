@@ -67,10 +67,11 @@ function update() {
 	
 	// Обновление улучшений
 	for (i = 0; i < STATS.upgs['upg'].length; i++) {
-		let num = eval("upg" + (i+1)), 
+		let num = eval("upg" + (i+1)),
+			eff_1 = STATS.upgs['bb_upg'][15].eff[0],
 			upgr = STATS.upgs['upg'][i], 
 			cur = upgr.cost[4],
-			cost =  upgr.cost[0],
+			cost =  upgr.cost[0] * eff_1,
 			desc = upgr.desc,
 			clr = upgr.clr,
 			lvl = upgr.lvl,
@@ -132,7 +133,7 @@ function update() {
 	}
 	
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-	console.log(STATS.plr.other.best_coins)
+	
 	// Обновление описания bb улучшений
 	if (o.bb_upg > 0) {
 		

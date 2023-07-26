@@ -30,6 +30,7 @@ const MATH = {
 				math_score = MATH.plr.score(),
 				math_rage = MATH.plr.rage(),
 				eff_1 = STATS.upgs['upg'][3].eff[0],
+				lvl_1 = STATS.upgs['bb_upg'][17].lvl,
 				tile = document.getElementById("tile"+id);
 			if (o.lose == 0) {
 				// Пустая клетка
@@ -50,7 +51,9 @@ const MATH = {
 					m.coins +=  Math.floor(math_score / 100 * eff_1);
 				
 					o.lose = 1;
-					o.score = 0;
+					
+					if (lvl_1 == 0) {o.score = 0}
+					
 					m.rage += math_rage;
 					this.show();
 				}
@@ -131,14 +134,15 @@ const MATH = {
 				coef = upgr.cost[1],
 				mode = upgr.cost[2],
 				starter = upgr.cost[3],
-				lvl = upgr.lvl;
+				lvl = upgr.lvl,
+				eff_1 = STATS.upgs['bb_upg'][15].eff[0];
 			
 			if (mode == "c*") {cur *= coef}
 			else if (mode == "c**") {cur **= coef}
 			else if (mode == "l*") {cur = starter * coef * (lvl+1)}
 			else if (mode == "l**") {cur = starter * coef ** (lvl+1)}
 			
-			return cur;
+			return Math.floor(cur * eff_1);
 		},
 		eff(id, type) {
 			let upgr = STATS.upgs[type][id],

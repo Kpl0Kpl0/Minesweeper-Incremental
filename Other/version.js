@@ -148,28 +148,28 @@ function update_version() {
 	}
 	if (7> o.version) {
 		
-		compensation(7, 'upg');
-		clear_upg_storage(7, 'upg');
-		clear_upg_stats(7, 'upg');
+		compensation(7, 'bb_upg');
+		clear_upg_storage(7, 'bb_upg');
+		clear_upg_stats(7, 'bb_upg');
 		
-		compensation(8, 'upg');
-		clear_upg_storage(8, 'upg');
-		clear_upg_stats(8, 'upg');
+		compensation(8, 'bb_upg');
+		clear_upg_storage(8, 'bb_upg');
+		clear_upg_stats(8, 'bb_upg');
 		
-		compensation(9, 'upg');
-		clear_upg_storage(9, 'upg');
-		clear_upg_stats(9, 'upg');
+		compensation(9, 'bb_upg');
+		clear_upg_storage(9, 'bb_upg');
+		clear_upg_stats(9, 'bb_upg');
 		
-		compensation(12, 'upg');
-		clear_upg_storage(12, 'upg');
-		clear_upg_stats(12, 'upg');
+		compensation(12, 'bb_upg');
+		clear_upg_storage(12, 'bb_upg');
+		clear_upg_stats(12, 'bb_upg');
 		
 		o.version = 7;
 		console.log('New player version: ' + o.version)
 		
 	}
 	
-	LOAD.load_progress();
-	
 }
 update_version();
+
+LOAD.load_progress();
