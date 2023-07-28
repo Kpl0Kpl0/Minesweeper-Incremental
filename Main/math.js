@@ -136,12 +136,15 @@ const MATH = {
 				mode = upgr.cost[2],
 				starter = upgr.cost[3],
 				lvl = upgr.lvl,
-				eff_1 = STATS.upgs['bb_upg'][15].eff[0];
+				eff_1 = 0;
 			
 			if (mode == "c*") {cur *= coef}
 			else if (mode == "c**") {cur **= coef}
 			else if (mode == "l*") {cur = starter * coef * (lvl+1)}
 			else if (mode == "l**") {cur = starter * coef ** (lvl+1)}
+			
+			if (type == 'upg') {eff_1 = STATS.upgs['bb_upg'][15].eff[0]}
+			else {eff_1 = 1}
 			
 			return cur * eff_1;
 		},
