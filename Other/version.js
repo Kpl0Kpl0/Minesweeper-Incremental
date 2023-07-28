@@ -210,6 +210,16 @@ function update_version() {
 		console.log('New player version: ' + o.version)
 		
 	}
+	if (11> o.version) {
+		
+		compensation(12, 'bb_upg');
+		clear_upg_storage(12, 'bb_upg');
+		clear_upg_stats(12, 'bb_upg');
+		
+		o.version = 11;
+		console.log('New player version: ' + o.version)
+		
+	}
 	
 }
 update_version();
