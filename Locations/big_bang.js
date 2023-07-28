@@ -10,4 +10,4 @@ bb_upg_buy.onclick = function() {
 
 bt_bb_upg_power.onclick = function() {STATS.plr.other.bb_screen = "power"};
 bt_bb_upg_comfort.onclick = function() {STATS.plr.other.bb_screen = "comfort"};
-bt_bb_upg_abilities.onclick = function() {STATS.plr.other.bb_screen = "abilities"};
+bt_bb_upg_automation.onclick = function() {STATS.plr.other.bb_screen = "automation"};

@@ -6,22 +6,19 @@
 function upg_storage(id, type, task) {
 	
 	let upgr = STATS.upgs[type][id],
-		m1 = ['lvl', 'upgr.lvl',
-		'eff', 'upgr.eff',
-		'cost', 'upgr.cost',
-		'max', 'upgr.max',
-		'visible', 'upgr.visible',
-		'resettable', 'upgr.resettable'];
+		m1 = ['lvl', 'eff', 'cost',
+		'max', 'visible', 'resettable',
+		'desc', 'code',];
 		
 		
 		
-	for (let i = 0; i < m1.length; i+=2) {
+	for (let i = 0; i < m1.length; i++) {
 		
 		let store_name = String(type) + "_" + m1[i] + String(id);
 		
 		if (task == 'save') {
 			
-			localStorage.setItem(store_name,JSON.stringify(eval(m1[i+1])));
+			localStorage.setItem(store_name,JSON.stringify(eval('upgr.' + m1[i])));
 			
 		} else {
 			

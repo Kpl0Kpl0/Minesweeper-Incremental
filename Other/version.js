@@ -168,6 +168,20 @@ function update_version() {
 		console.log('New player version: ' + o.version)
 		
 	}
+	if (26> o.version) {
+		
+		compensation(6, 'bb_upg');
+		clear_upg_storage(6, 'bb_upg');
+		clear_upg_stats(6, 'bb_upg');
+		
+		compensation(7, 'bb_upg');
+		clear_upg_storage(7, 'bb_upg');
+		clear_upg_stats(7, 'bb_upg');
+		
+		o.version = 26;
+		console.log('New player version: ' + o.version)
+		
+	}
 	
 }
 update_version();

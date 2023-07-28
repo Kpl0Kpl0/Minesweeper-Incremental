@@ -23,7 +23,7 @@ var STATS = {
 			lose: 0,
 			bb_screen: 'power',
 			bb_upg: 0,
-			boost: 1,
+			boost: 1000000000000000000000000000000000000000000000000000000000000000,
 			version: 1,
 			best_coins: 0
 		}
@@ -115,14 +115,14 @@ var STATS = {
 			},
 			/* rage_3 */{
 				lvl: 0,
-				eff: [1, 0, "c+", 1],
+				eff: [0, 10, "c+", 0],
 				cost: [500, 10, "c*", 500, "rage"],
 				max: [5, 5],
 				resettable: 1,
 				visible: 1,
 				code: "upg9.style.display = 'block';" +
-					"STATS.upgs['upg'][0].max[0]+=10",
-				desc: "increases limit of the first coin upgrade by 10", 
+					"STATS.upgs['upg'][0].max[0] += STATS.upgs['upg'][7].eff[1]",
+				desc: "increases limit of the first coin upgrade by 10",
 				clr: ["D29880", "936A5A", "A05D4B", "704134"]
 			},
 			/* rage_4 */{
@@ -237,7 +237,8 @@ var STATS = {
 				resettable: 1,
 				visible: 0,
 				code: "STATS.upgs['upg'][6].resettable = 0;" +
-					"STATS.upgs['bb_upg'][8].visible = 1",
+					"STATS.upgs['bb_upg'][8].visible = 1;" +
+					"STATS.upgs['bb_upg'][18].visible = 1;",
 				name: ["cg1", "Comfort Gameplay 1"], 
 				desc: "Big Bang doesn't reset the second rage upgrade, unlock new upgrade",
 				type: "comfort", 
@@ -252,9 +253,12 @@ var STATS = {
 				visible: 1,
 				code: "STATS.upgs['bb_upg'][6].visible = 1;" +
 					"STATS.upgs['bb_upg'][10].visible = 1;" +
-					"STATS.upgs['bb_upg'][12].visible = 1;",
+					"STATS.upgs['bb_upg'][12].visible = 1;" +
+					"STATS.upgs['bb_upg'][21].visible = 1;" +
+					"STATS.upgs['bb_upg'][22].visible = 1;" +
+					"STATS.upgs['bb_upg'][23].visible = 1",
 				name: ["cc1", "Comfort Cost 1"], 
-				desc: "reduces Big Bang requirements by 10, unlock more upgrades",
+				desc: "reduces Big Bang requirements by 10, unlock more upgrades and automation",
 				type: "comfort", 
 				cords: [2, 28]
 			},
@@ -268,7 +272,7 @@ var STATS = {
 				code: "STATS.upgs['upg'][9].resettable = 0;" +
 					"STATS.upgs['bb_upg'][9].visible = 1;",
 				name: ["cg2", "Comfort Gameplay 2"],
-				desc: "Big Bang doesn't reset the fifth rage upgrade, unlock more upgrades",
+				desc: "Big Bang doesn't reset the fifth rage upgrade, unlock new upgrade",
 				type: "comfort",
 				cords: [8, 22]
 			},
@@ -349,7 +353,7 @@ var STATS = {
 				max: [1, 1],
 				resettable: 1,
 				visible: 0,
-				code: "",
+				code: "STATS.upgs['bb_upg'][17].visible = 1;",
 				name: ["cr2", "Comfort Rules 2"], 
 				desc: "getting shards depends on the number of all coins earned since the last Big Bang",
 				type: "comfort", 
@@ -366,7 +370,7 @@ var STATS = {
 				name: ["cc3", "Comfort Cost 3"], 
 				desc: "all coin and rage upgrades are 10% cheaper",
 				type: "comfort", 
-				cords: [14, 40]
+				cords: [14, 28]
 			},
 			/* cl3 */{
 				lvl: 0,
@@ -393,6 +397,88 @@ var STATS = {
 				desc: "does not discard coins when losing",
 				type: "comfort", 
 				cords: [14, 40]
+			},
+			/* ce1 */{
+				lvl: 0,
+				eff: [1, 1, "c+", 1], 
+				cost: [10, 2, "l*", 10, "shards"], 
+				max: [4, 4],
+				resettable: 1,
+				visible: 0,
+				code: "STATS.upgs['upg'][2].desc = 'coin gain is multiplied by ' + (10*STATS.upgs['bb_upg'][18].eff[0]);" +
+					"STATS.upgs['bb_upg'][19].visible = 1;",
+				name: ["ce1", "Comfort Efficiency 1"], 
+				desc: "increases efficiency of the third coin upgrade by 10",
+				type: "comfort", 
+				cords: [2, 16]
+			},
+			/* ce2 */{
+				lvl: 0,
+				eff: [0, 5, "c+", 0], 
+				cost: [40, 2, "l*", 40, "shards"], 
+				max: [1, 1],
+				resettable: 1,
+				visible: 0,
+				code: "STATS.upgs['upg'][0].max[0] += (5*STATS.upgs['upg'][7].lvl);" +
+					"STATS.upgs['upg'][7].eff[1] += 5;" +
+					"STATS.upgs['upg'][7].desc = 'increases limit of the first coin upgrade by 15';" +
+					"STATS.upgs['bb_upg'][20].visible = 1;",
+				name: ["ce2", "Comfort Efficiency 2"], 
+				desc: "increases efficiency of the third rage upgrade to 15",
+				type: "comfort",
+				cords: [8, 16]
+			},
+			/* ce3 */{
+				lvl: 0,
+				eff: [1, 0.1, "c+", 1],
+				cost: [160, 2, "l*", 160, "shards"],
+				max: [1, 1],
+				resettable: 1,
+				visible: 0,
+				code: "",
+				name: ["ce3", "Comfort Efficiency 3"],
+				desc: "increases efficiency of the fifth rage upgrade by 10%",
+				type: "comfort",
+				cords: [14, 16]
+			},
+			/* ac1 */{
+				lvl: 0,
+				eff: [0, 0.01, "c+", 0],
+				cost: [1, 2, "c*", 1, "shards"],
+				max: [10, 10],
+				resettable: 1,
+				visible: 0,
+				code: "",
+				name: ["ac1", "Automation Coins 1"], 
+				desc: "gives X% of the coins per second of the coins you should get (X - level)",
+				type: "automation",
+				cords: [2, 22]
+			},
+			/* ar1 */{
+				lvl: 0,
+				eff: [0, 0.01, "c+", 0],
+				cost: [1, 2, "c*", 1, "shards"],
+				max: [10, 10],
+				resettable: 1,
+				visible: 0,
+				code: "",
+				name: ["ar1", "Automation Rage 1"],
+				desc: "gives X% rage per second of the rage you should get (only works after losing)",
+				type: "automation",
+				cords: [2, 28]
+			},
+			/* as1 */{
+				lvl: 0,
+				eff: [0, 0.01, "c+", 0],
+				cost: [10, 2, "c*", 10, "shards"],
+				max: [10, 10],
+				resettable: 1,
+				visible: 0,
+				code: "",
+				name: ["as1", "Automation Shards 1"],
+				desc: "gives X% of the shards per minute of the shards you should get",
+				type: "automation",
+				cords: [2, 34]
 			}
 		]
 	},

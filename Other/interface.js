@@ -119,15 +119,26 @@ function update() {
 		let bb_upgr2_id = document.getElementById(bb_upgr2[i].name[0]);
 		
 		// Если шардов на улучшение хватает, то...
-		if (bb_upgr2[i].cost[0] <= m.shards && bb_upgr2[i].lvl != bb_upgr2[i].max[0]) {
+		if (bb_upgr2[i].lvl == bb_upgr2[i].max[0]) {
+			
+			// Кнопка голубая
+			bb_upgr2_id.style.backgroundColor = '#2F8CB4';
+			bb_upgr2_id.style.border = "2px solid #0F394A";
+			bb_upgr2_id.style.color = '#0F394A';
+			
+		} else if (bb_upgr2[i].cost[0] <= m.shards) {
 			
 			// Кнопка светлая
 			bb_upgr2_id.style.backgroundColor = '#2F30B4';
+			bb_upgr2_id.style.border = "2px solid #0F104B";
+			bb_upgr2_id.style.color = '#0F104B';
 			
 		} else {
 			
 			// Кнопка темная
-			bb_upgr2_id.style.backgroundColor = '#262790';
+			bb_upgr2_id.style.backgroundColor = '#22237F';
+			bb_upgr2_id.style.border = "2px solid #0B0B35";
+			bb_upgr2_id.style.color = '#0B0B35';
 			
 		}
 	}

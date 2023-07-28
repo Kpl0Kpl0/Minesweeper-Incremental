@@ -49,6 +49,7 @@ const MATH = {
 				
 					// Дает монеты при проигрише от монетного улучшения 4
 					m.coins +=  Math.floor(math_score / 100 * eff_1);
+					o.best_coins += Math.floor(math_score / 100 * eff_1);
 				
 					o.lose = 1;
 					
@@ -174,10 +175,14 @@ const MATH = {
 	},
 	plr: {
 		coins() {
+			
 			let x =  this.score();
+			
 			return x;
+			
 		},
 		score() {
+			
 			let o = STATS.plr.other,
 				upgr = STATS.upgs['upg'],
 				bb_upgr = STATS.upgs['bb_upg'],
@@ -187,12 +192,16 @@ const MATH = {
 				eff_4 = upgr[8].eff[0],
 				eff_5 = bb_upgr[0].eff[0],
 				eff_6 = bb_upgr[3].eff[0],
+				eff_7 = bb_upgr[18].eff[0],
 				boost = o.boost,
 				score = o.score,
 				mult = score ** (2 + eff_4);
-			return mult * eff_1 * eff_2 * eff_3 * eff_5 * eff_6 * boost;
+				
+			return mult * eff_1 * (eff_2 * eff_7 ) * eff_3 * eff_5 * eff_6 * boost;
+			
 		},
 		rage() {
+			
 			let o = STATS.plr.other,
 				upgr = STATS.upgs['upg'],
 				bb_upgr = STATS.upgs['bb_upg'],
@@ -205,18 +214,25 @@ const MATH = {
 				eff_3 = upgr[1].eff[0],
 				eff_4 = bb_upgr[1].eff[0],
 				eff_5 = bb_upgr[4].eff[0],
+				eff_6 = bb_upgr[20].eff[0],
 				coin_length = String(Math.floor(STATS.plr.main.coins)).length,
 				boost = o.boost;
+			
 			if (lvl_1 > 0 || lvl_4 > 0) {
+				
 				if (lvl_2 == 1) {eff_1 = eff_3}
 				else {eff_1 = 1}
 				
-				if (lvl_3 == 1) {eff_2 = coin_length}
+				if (lvl_3 == 1) {eff_2 = Math.floor(coin_length * eff_6)}
 				else {eff_2 = 1}
+				
 			}
+			
 			return eff_1 * eff_2 * eff_4 * eff_5 * boost;
+			
 		},
 		shards() {
+			
 			let m = STATS.plr.main,
 				o = STATS.plr.other,
 				coins = m.coins,
@@ -254,6 +270,7 @@ const MATH = {
 			one = 1 * final_boost;
 			
 			return [gain, math_cost, one];
+			
 		},
 		progress(num) {
 			let o = STATS.plr.other;
@@ -278,6 +295,7 @@ const MATH = {
 		cur1() {
 			STATS.plr.main.coins = 0;
 			STATS.plr.main.rage = 0;
+			STATS.plr.other.score = 0;
 			STATS.plr.other.best_coins = 0;
 		}
 	}
