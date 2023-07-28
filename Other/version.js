@@ -55,6 +55,9 @@ function update_version() {
 			
 		}
 	}
+	if (o.version == 26) {
+		o.version = 7;
+	}
 	
 	if (2 > o.version) {
 		
@@ -168,7 +171,7 @@ function update_version() {
 		console.log('New player version: ' + o.version)
 		
 	}
-	if (26> o.version) {
+	if (8> o.version) {
 		
 		compensation(6, 'bb_upg');
 		clear_upg_storage(6, 'bb_upg');
@@ -178,7 +181,15 @@ function update_version() {
 		clear_upg_storage(7, 'bb_upg');
 		clear_upg_stats(7, 'bb_upg');
 		
-		o.version = 26;
+		compensation(13, 'bb_upg');
+		clear_upg_storage(13, 'bb_upg');
+		clear_upg_stats(13, 'bb_upg');
+		
+		compensation(14, 'bb_upg');
+		clear_upg_storage(14, 'bb_upg');
+		clear_upg_stats(14, 'bb_upg');
+		
+		o.version = 8;
 		console.log('New player version: ' + o.version)
 		
 	}
