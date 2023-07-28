@@ -55,9 +55,6 @@ function update_version() {
 			
 		}
 	}
-	if (o.version == 26) {
-		o.version = 7;
-	}
 	
 	if (2 > o.version) {
 		
@@ -200,6 +197,16 @@ function update_version() {
 		clear_upg_stats(12, 'bb_upg');
 		
 		o.version = 9;
+		console.log('New player version: ' + o.version)
+		
+	}
+	if (10> o.version) {
+		
+		compensation(5, 'upg');
+		clear_upg_storage(5, 'upg');
+		clear_upg_stats(5, 'upg');
+		
+		o.version = 10;
 		console.log('New player version: ' + o.version)
 		
 	}

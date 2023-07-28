@@ -143,7 +143,7 @@ const MATH = {
 			else if (mode == "l*") {cur = starter * coef * (lvl+1)}
 			else if (mode == "l**") {cur = starter * coef ** (lvl+1)}
 			
-			return Math.floor(cur * eff_1);
+			return parseFloat(cur * eff_1).toFixed(10);
 		},
 		eff(id, type) {
 			let upgr = STATS.upgs[type][id],
@@ -285,7 +285,7 @@ const MATH = {
 			let upgr = STATS.upgs['upg'];
 			for (i = 0; i < upgr.length; i++) {
 				if (upgr[i].resettable == 1) {
-					upgr[i].cost[0] = upgr[i].cost[3];
+					upgr[i].cost[0] = parseFloat(upgr[i].cost[3]).toFixed(10);
 					upgr[i].eff[0] = upgr[i].eff[3];
 					upgr[i].max[0] = upgr[i].max[1];
 					upgr[i].lvl = 0;

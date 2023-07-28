@@ -95,7 +95,7 @@ var STATS = {
 				lvl: 0, 
 				eff: [1, 100, "l*", 1], 
 				cost: [10, 2, "c*", 10, "rage"], 
-				max:[0, 0],
+				max:[1000, 1000],
 				resettable: 1,
 				visible: 1,
 				code: "upg7.style.display = 'block'",
