@@ -23,7 +23,7 @@ var STATS = {
 			lose: 0,
 			bb_screen: 'power',
 			bb_upg: 0,
-			boost: 1000000000000000000000000000000000000000000000000000000000000000,
+			boost: 1,
 			version: 1,
 			best_coins: 0
 		}
