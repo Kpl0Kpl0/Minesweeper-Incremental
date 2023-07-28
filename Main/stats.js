@@ -326,6 +326,7 @@ var STATS = {
 				resettable: 1,
 				visible: 0,
 				code: "STATS.upgs['upg'][5].cost[0] *= 0.2;" +
+					"STATS.upgs['upg'][5].cost[3] *= 0.2;" +
 					"STATS.upgs['bb_upg'][15].visible = 1;",
 				name: ["cc2", "Comfort Cost 2"], 
 				desc: "first rage upgrade are 80% cheaper",
@@ -463,7 +464,7 @@ var STATS = {
 				visible: 0,
 				code: "",
 				name: ["ar1", "Automation Rage 1"],
-				desc: "gives X% rage per second of the rage you should get (only works after losing)",
+				desc: "gives X% rage per second of the rage you should get (only works after losing, X - level)",
 				type: "automation",
 				cords: [2, 28]
 			},
@@ -476,7 +477,7 @@ var STATS = {
 				visible: 0,
 				code: "",
 				name: ["as1", "Automation Shards 1"],
-				desc: "gives X% of the shards per minute of the shards you should get",
+				desc: "gives X% of the shards per minute of the shards you should get (X - level)",
 				type: "automation",
 				cords: [2, 34]
 			}
